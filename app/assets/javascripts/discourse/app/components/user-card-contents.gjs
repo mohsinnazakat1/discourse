@@ -335,6 +335,11 @@ export default class UserCardContents extends CardContentsBase {
     user.checkEmail();
   }
 
+  @action
+  goToGoogle() {
+    window.open("https://www.google.com", "_blank", "noopener");
+  }
+
   <template>
     {{#if this.visible}}
       <PluginOutlet
@@ -496,6 +501,14 @@ export default class UserCardContents extends CardContentsBase {
                 @connectorTagName="li"
                 @outletArgs={{lazyHash user=this.user close=this.close}}
               />
+              <li>
+                <DButton
+                  @action={{this.goToGoogle}}
+                  @icon="globe"
+                  @label="user.google"
+                  class="btn-primary"
+                />
+              </li>
               {{#if this.showFilter}}
                 <li>
                   <DButton
